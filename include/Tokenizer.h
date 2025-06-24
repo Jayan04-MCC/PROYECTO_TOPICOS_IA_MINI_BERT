@@ -4,5 +4,10 @@
 
 #ifndef TOKENIZER_H
 #define TOKENIZER_H
+#include <iostream>
+#include <cstdlib>
+
+void tokenizerWord();
+
 
 #endif //TOKENIZER_H

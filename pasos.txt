@@ -1,0 +1,83 @@
+ Plan de trabajo – 7 días
+🟢 Día 1 – Preparativos y carga de pesos
+ Instala Eigen (librería para matrices en C++)
+
+ Elige estructura del proyecto (usa CMake o Make)
+
+ Escribe código en C++ para:
+
+Leer archivos .csv de pesos (usa std::ifstream o una pequeña librería)
+
+Cargar tensores en Eigen::MatrixXf o Eigen::VectorXf
+
+ Prueba leer algunos pesos (ej. embeddings_word_embeddings_weight.csv) y muestra tamaño en consola
+
+🧠 Objetivo del día: tener un sistema funcional que lea pesos de disco en C++
+
+🟡 Día 2 – Embeddings de entrada
+ Implementa clase EmbeddingLayer
+
+Word embeddings (multiplicación por embedding matrix)
+
+Position embeddings (sumar por posición)
+
+LayerNorm (usa peso y bias)
+
+ Implementa un loader de tokens hardcodeado (simula entrada como {101, 2003, 102})
+
+ Ejecuta y muestra los embeddings generados para una frase
+
+🧠 Objetivo del día: obtener vectores de entrada listos para entrar al Transformer
+
+🟠 Día 3 – Capa Transformer (1 bloque)
+ Implementa:
+
+Atención (query, key, value, softmax, dot product, proyección)
+
+Feedforward (2 capas lineales)
+
+LayerNorms
+
+ Crea clase TransformerBlock con todos estos pasos
+
+ Carga los pesos para capa 0 y pásale los embeddings de entrada
+
+🧠 Objetivo del día: ejecutar una frase por una capa Transformer
+
+🟣 Día 4 – Pipeline completo (6 capas)
+ Carga pesos para las 6 capas Transformer
+
+ Encadena 6 bloques Transformer
+
+ Encapsula esto en una clase SentenceEncoder
+
+🧠 Objetivo del día: obtener la secuencia de embeddings finales (shape: tokens × 384)
+
+🔵 Día 5 – Pooling y comparación
+ Implementa función mean_pooling() → Vector de frase (384,)
+
+ Implementa función cosine_similarity(a, b)
+
+ Codifica dos frases distintas, aplica todo el pipeline, y muestra similitud en %
+
+🧠 Objetivo del día: obtener similitud semántica de dos frases (output en consola)
+
+🔴 Día 6 – Limpieza y pruebas
+ Refactoriza: divide en módulos .h / .cpp
+
+ Asegúrate que carga de pesos es flexible (por nombre de archivo)
+
+ Crea archivos de prueba con frases tokenizadas (o crea wrapper en Python para pasarlas)
+
+ Prueba con varias frases: similares / diferentes
+
+🧠 Objetivo del día: tener una base limpia y funcional con pruebas simples
+
+⚫ Día 7 – Optimización y presentación
+ Mide tiempos de inferencia
+
+ Agrega validación de archivos y tamaños
+
+ Documenta funciones clave (comentarios o README)
+
+ Si es para presentación, crea script o interfaz CLI:
