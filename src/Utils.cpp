@@ -1,7 +1,7 @@
 //
 // Created by JAYAN on 23/06/2025.
 //
-#include "D:\PROYECTO-TOPICOS-IA\include\Utils.h"
+#include "../include/Utils.h"
 #include <fstream>
 #include <sstream>
 #include <vector>
