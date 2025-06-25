@@ -1,8 +1,8 @@
 //
 // Created by JAYAN on 23/06/2025.
 //
-#include "D:/PROYECTO-TOPICOS-IA/include/Embeddings.h"
-#include "D:/PROYECTO-TOPICOS-IA/include/Utils.h"
+#include "../include/Embeddings.h"
+#include "../include/Utils.h"
 #include "cmath"
 EmbeddingLayer::EmbeddingLayer( const std::string &word_path,
                                 const std::string &position_path,

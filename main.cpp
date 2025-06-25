@@ -1,18 +1,18 @@
 #include <iostream>
-#include "D:\PROYECTO-TOPICOS-IA\include\Utils.h"
-#include "D:\PROYECTO-TOPICOS-IA\include\Tokenizer.h"
-#include "D:\PROYECTO-TOPICOS-IA\include\Embeddings.h"
-std::string PATH = "D:/PROYECTO-TOPICOS-IA/Weights/pesos_comprimidos/content/pesos_csv/";
-std::string WORD_PATH =PATH + "embeddings_word_embeddings_weight.csv";
-std::string POSITION_PATH =PATH +"embeddings_position_embeddings_weight.csv";
-std::string IN_WEIGHT_PATH =PATH +"embeddings_LayerNorm_weight.csv";
-std::string IN_BIAS_PATH =PATH +"embeddings_LayerNorm_bias.csv";
+#include "include/Utils.h"
+#include "include/Tokenizer.h"
+#include "include/Embeddings.h"
+#include "include/Config.h"
 int main() {
 
-    EmbeddingLayer emb(WORD_PATH, POSITION_PATH, IN_WEIGHT_PATH, IN_BIAS_PATH);
+    Config& config = Config::getInstance();
+    EmbeddingLayer emb(config.getWordEmbeddingsPath(), 
+                       config.getPositionEmbeddingsPath(),
+                       config.getLayerNormWeightPath(), 
+                       config.getLayerNormBiasPath());
     tokenizerWord();
     //capturamos los ids
-    Eigen::VectorXf ids = loadCSVtoVector("D:/PROYECTO-TOPICOS-IA/tokens.csv");
+    Eigen::VectorXf ids = loadCSVtoVector(config.getTokensPath());
     std::vector<int> tokens(ids.data(),ids.data()+ ids.size());  // Token IDs de entrada
     for (int token : tokens) {
         std::cout << token <<" ,";
