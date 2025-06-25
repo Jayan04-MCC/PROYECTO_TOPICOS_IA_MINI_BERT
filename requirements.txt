@@ -1,0 +1,12 @@
+# Dependencias para descargar y procesar pesos del modelo
+sentence-transformers>=2.2.0
+safetensors>=0.3.0
+torch>=1.11.0
+transformers>=4.21.0
+numpy>=1.21.0
+
+# Dependencias para tokenización
+tokenizers>=0.13.0
+
+# Utilidades
+tqdm>=4.64.0

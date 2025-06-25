@@ -40,6 +40,7 @@ PROYECTO_TOPICOS_IA
 # Model weights and data files (potentially large)
 weights/
 pesos_comprimidos/
+all-MiniLM-L6-v2/
 *.bin
 *.pt
 *.pth
