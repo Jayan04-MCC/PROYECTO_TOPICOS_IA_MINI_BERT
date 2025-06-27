@@ -6,17 +6,8 @@
 #include <filesystem>
 
 void tokenizerWord() {
-    Config& config = Config::getInstance();
-    std::string pythonScript = config.getProjectPath() + "tokenizer.py";
-    
-    // Verificar si el script existe
-    if (!std::filesystem::exists(pythonScript)) {
-        std::cerr << "Error: No se encontró tokenizer.py en " << pythonScript << std::endl;
-        return;
-    }
-    
-    std::string command = "python -u \"" + pythonScript + "\"";
-    system(command.c_str());
+
+    system("python -u \"d:\\PROYECTO-TOPICOS-IA\\tokenizer.py\"");
     
     std::cout << "Función tokenizerWord llamada." << std::endl;
 }

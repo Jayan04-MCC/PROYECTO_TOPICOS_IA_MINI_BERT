@@ -28,7 +28,7 @@ public:
 private:
     Config() = default;
     std::string project_path;
-    std::string weights_dir = "weights/pesos_comprimidos/content/pesos_csv/";
+    std::string weights_dir = "Weights/pesos_comprimidos/content/pesos_csv/";
     
     void initializePaths();
 };

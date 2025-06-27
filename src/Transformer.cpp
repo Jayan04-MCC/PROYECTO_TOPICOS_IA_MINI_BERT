@@ -36,37 +36,18 @@ TransformerBlock::TransformerBlock(const std::string& prefix)
 
 Eigen::MatrixXf TransformerBlock::forward(const Eigen::MatrixXf& x)
 {
+    Eigen::MatrixXf attn_out = x;
     Eigen::MatrixXf out = Eigen::MatrixXf::Zero(x.rows(), x.cols());
     Eigen::MatrixXf attn = Eigen::MatrixXf::Zero(x.rows(), x.cols());
-    Eigen::MatrixXf attn_out = x;
     Eigen::MatrixXf ff = Eigen::MatrixXf::Zero(x.rows(), x.cols());
-
     // Attention + residual + norm
-    try {
         attn = selfAttention(x);
-    } catch (const std::exception& e) {
-        std::cerr << "❌ Error en selfAttention: " << e.what() << std::endl;
-    }
-
-    try {
+    // normalizacion
         attn_out = applyLayerNorm(x + attn, ln1_weight, ln1_bias);
-    } catch (const std::exception& e) {
-        std::cerr << "❌ Error en applyLayerNorm 1: " << e.what() << std::endl;
-    }
-
     // Feedforward + residual + norm
-    try {
         ff = feedForward(attn_out);
-    } catch (const std::exception& e) {
-        std::cerr << "❌ Error en feedForward: " << e.what() << std::endl;
-    }
-
-    try {
+    // normalizacion
         out = applyLayerNorm(attn_out + ff, ln2_weight, ln2_bias);
-    } catch (const std::exception& e) {
-        std::cerr << "❌ Error en applyLayerNorm 2: " << e.what() << std::endl;
-    }
-
     return out;
 }
 

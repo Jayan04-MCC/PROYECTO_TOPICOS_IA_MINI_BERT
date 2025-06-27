@@ -3,6 +3,7 @@
 //
 #include "../include/Utils.h"
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <vector>
 #include <stdexcept>
@@ -36,6 +37,7 @@ Eigen::MatrixXf loadCSVtoMatrix(const std::string& filename) {
         for (int j = 0; j < cols; ++j)
             mat(i, j) = values[i][j];
 
+    std::cout << filename + " open correct "<< std::endl;
     return mat;
 }
 
